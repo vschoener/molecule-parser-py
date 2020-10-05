@@ -11,6 +11,7 @@ argh = "*"
 pylint = "*"
 black = "*"
 rope = "*"
+pytest-cov = "*"
 
 [packages]
 
