@@ -3,7 +3,7 @@
 """
 
 from re import compile as compile_regex
-from utils import replicate_pattern
+from src.utils import replicate_pattern
 from src.exceptions.enclosure_exception import EnclosureException
 
 MOLECULE_REGEX = r"([A-Z]{1}[a-z]*)(\d*)"
