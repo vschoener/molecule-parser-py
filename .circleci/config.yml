@@ -13,7 +13,10 @@ jobs:
           name: Install dependencies
           command: pipenv install --dev
       - run: make coverage
-      - run: codecov -t $CODECOV_TOKEN || echo 'Sending coverage failed'
+      - run:
+          command: |
+            export PYTHONPATH=$PYTHONPATH:src
+            codecov -t $CODECOV_TOKEN || echo 'Sending coverage failed'
 
 workflows:
   version: 2
