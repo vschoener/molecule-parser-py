@@ -2,7 +2,7 @@
 
 # Molecule parser
 
-This is a technical test I had make at home.
+This is a technical test I've made at home.
 
 ## Requirement
 

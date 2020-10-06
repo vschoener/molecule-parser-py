@@ -24,6 +24,10 @@ def test_flatten_sub_molecule_should_convert_simple_flatten_molecule():
     assert flatten_sub_molecule("Mg(OH)2") == "MgOHOH"
 
 
+def test_flatten_sub_molecule_should_convert_with_no_number():
+    assert flatten_sub_molecule("Mg(OH)") == "MgOH"
+
+
 def test_flatten_sub_molecule_should_convert_flatten_molecule():
     assert flatten_sub_molecule("KKKK[ON(SOOO)2]2") == "KKKKONSOOOSOOOONSOOOSOOO"
 
@@ -45,7 +49,7 @@ def test_flatten_all_should_convert_all_molecules_with_easier():
 
 
 def test_flatten_all_should_convert_all_molecules_with_simple():
-    assert flatten_all("Mg(OH)2") == "MgOHOH"
+    assert flatten_all("Mg2OH") == "MgMgOH"
 
 
 def test_flatten_all_should_convert_all_molecules_with_complex():
