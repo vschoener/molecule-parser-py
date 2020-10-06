@@ -1,21 +1,21 @@
+from pytest import mark
+
 from src.molecule_parser import parse
 
 
-def test_parse_should_return_empty():
-    assert parse("") == {}
-
-
-def test_parse_should_handle_h2O():
-    assert parse("H2O") == {"H": 2, "O": 1}
-
-
-def test_parse_should_handle_with_simple_sub_molecule_string():
-    assert parse("Mg(OH)2") == {"H": 2, "Mg": 1, "O": 2}
-
-
-def test_parse_should_handle_multiple_sub_molecule_string():
-    assert parse("K4[ON(SO3)2]2") == {"K": 4, "N": 2, "O": 14, "S": 4}
-
-
-def test_parse_should_handle_multiple_sub_molecule_with_close_enclosures_string():
-    assert parse("K4[(SO3)]2") == {"K": 4, "O": 6, "S": 2}
+def describe_parse():
+    @mark.parametrize(
+        "molecule, expected",
+        [
+            ("", {}),  # Empty case
+            ("H2O", {"H": 2, "O": 1}),  # Simple case
+            ("Mg(OH)2", {"H": 2, "Mg": 1, "O": 2}),  # With sub case
+            ("K4[ON(SO3)2]2", {"K": 4, "N": 2, "O": 14, "S": 4}),  # With complex case
+            (
+                "K4[(SO3)]2",
+                {"K": 4, "O": 6, "S": 2},
+            ),  # With complex case without multiplier after encloser
+        ],
+    )
+    def test_fixtures(molecule, expected):
+        assert parse(molecule) == expected

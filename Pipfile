@@ -12,6 +12,7 @@ pylint = "*"
 black = "*"
 rope = "*"
 pytest-cov = "*"
+pytest-describe = "*"
 
 [packages]
 
