@@ -25,16 +25,19 @@ def __assert_and_replicate_flatten_molecule(match):
 
 
 def flatten_sub_molecule(flatten_molecule):
-    # Flatten sub molecule works as close as the flatten but it needs
-    # to deal with the enclosures
-    # ex: K4(SO3) => K4(SOOO)
+    """
+    Flatten sub molecule works as close as the flatten but it needs
+    to deal with the enclosures
+    ex: K4(SO3) => K4(SOOO)
+    """
+
     last_flatten_molecule = ""
     new_flatten_molecule = flatten_molecule
 
     while last_flatten_molecule != new_flatten_molecule:
         last_flatten_molecule = new_flatten_molecule
         new_flatten_molecule = sub_regex.sub(
-            lambda matched: __assert_and_replicate_flatten_molecule(matched),
+            __assert_and_replicate_flatten_molecule,
             last_flatten_molecule,
         )
 
@@ -42,9 +45,12 @@ def flatten_sub_molecule(flatten_molecule):
 
 
 def flatten(molecule):
-    # Flatten molecule means we want to replace the atoms and associated number
-    # by each times they exists
-    # ex: K4O2 => KKKKOO
+    """
+    Flatten molecule means we want to replace the atoms and associated number
+     by each times they exists
+     ex: K4O2 => KKKKOO
+    """
+
     flatten_molecule = molecule_regex.sub(
         lambda matched: replicate_pattern(matched[1], matched[2]), molecule
     )
@@ -53,4 +59,5 @@ def flatten(molecule):
 
 
 def flatten_all(molecule):
+    """ Shortcut methods to Flatten using both methods """
     return flatten_sub_molecule(flatten(molecule))

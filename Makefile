@@ -7,7 +7,7 @@ format:
 lint:
 	pipenv run pylint src
 
-test:
+test: lint
 	pipenv run pytest -s
 
 test_watch: test
