@@ -29,6 +29,15 @@ make test
 make test_watch
 ```
 
+## Dockerfile
+
+A dockerfile exist as an example. As we don't run any server/worker or even an entrypoint file, it won't do much but you can build and get a shell from it
+
+```bash
+docker build -t "molecule-parser" .
+docker run -it --rm molecule-parser bash
+```
+
 ## Subject
 
 For a given chemical formula represented by a string, count the number of atoms of each element contained in the molecule and return a dict.
