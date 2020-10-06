@@ -1,0 +1,16 @@
+{
+  "labels": ["dependencies"],
+  "assignees": ["vschoener"],
+  "commitMessagePrefix": "Renovate - ",
+  "pipenv": {
+      "enabled": true
+  },
+  "packageRules": [
+    {
+      "updateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true,
+      "groupName": "minors-update",
+      "labels": ["dependencies-minors"]
+    }
+  ]
+}
